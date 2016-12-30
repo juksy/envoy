@@ -74,8 +74,8 @@ $settings = [
         'gulp'=>true,
     ],
     'deps_install_command'=> [
-        'composer'=>'composer install --prefer-dist --no-scripts --no-interaction && composer dump-autoload --optimize',
-        'npm'=>'npm install --cache-min 999999',
+        'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
+        'npm'=>'npm install --cache-min 999999 --quiet',
         'bower'=>'bower install',
         'gulp'=>'gulp',
     ],
