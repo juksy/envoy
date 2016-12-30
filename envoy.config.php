@@ -52,7 +52,6 @@ $source_name = 'source';
  * shared sub-directories name , eg: storage
  */
 $shared_subdirs = [
-    'bootstrap/cache',
     'storage',
     'public/files',
     'public/static',
