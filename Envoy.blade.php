@@ -65,11 +65,11 @@
         'subproc_releasesetup'=>array(
             'rcp_env_to_remote',
             'link_env_on_remote',
-            'prepare_remoterelease',
             'depsinstall_remotesrc',
             'runtimeoptimize_remotesrc',
         ),
         'subproc_versionsetup'=>array(
+            'prepare_remoterelease',
             'syncreleasetoapp_version',
             'cleanupoldreleases_on_remote',
             'cleanup_tempfiles_local',
@@ -224,6 +224,7 @@
             rm -rf {{ $source_dir }}/${subdirname};
             ln -nfs {{ $app_base }}/${subdirname} {{ $source_dir }}/${subdirname};
         fi
+
         chgrp -f ${service_owner} {{ $app_base }}/${subdirname};
         chmod -f ug+rwx {{ $app_base }}/${subdirname};
     done
@@ -332,8 +333,10 @@
         $endOn = microtime(true);
         $totalTime = $endOn - $beginOn;
 
-        if (isset($slack['url'], $slack['channel'])) {
-            @slack($slack['url'], $slack['channel'], 'Deployed ['. implode(', ', $server_labels) .'] to _'. $env .'_ after '. round($totalTime, 1) .' sec.');
+        if (empty($slack['url'])) {
+            return;
         }
+
+        @slack($slack['url'], $slack['channel'], 'Deployed ['. implode(', ', $server_labels) .'] to _'. $env .'_ after '. round($totalTime, 1) .' sec.');
     }
 @endafter
