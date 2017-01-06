@@ -340,16 +340,3 @@
 @task('restart_php7.0fpm', ['on' => $server_labels, 'parallel' => true])
     sudo service php7.0-fpm restart;
 @endtask
-
-@after
-    if ($task === 'syncreleasetoapp_version') {
-        $endOn = microtime(true);
-        $totalTime = $endOn - $beginOn;
-
-        if (empty($slack['url'])) {
-            return;
-        }
-
-        @slack($slack['url'], $slack['channel'], 'Deployed ['. implode(', ', $server_labels) .'] to _'. $env .'_ after '. round($totalTime, 1) .' sec.');
-    }
-@endafter

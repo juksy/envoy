@@ -24,21 +24,6 @@ if (is_file($connections)) {
 $server_connections = json_decode($connections, true);
 
 /**
- * Slack notification configuration on deployment.
- */
-$slack = [
-    /**
-     * Slack URL for notifications.
-     */
-    'url' => getenv('SLACK_WEBHOOK'),
-
-    /**
-     * Slack channel where to send notifications.
-     */
-    'channel' => getenv('SLACK_CHANNEL'),
-];
-
-/**
  * number of releases keep on remote
  */
 $release_keep_count = 2;
