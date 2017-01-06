@@ -74,12 +74,17 @@
             'cleanupoldreleases_on_remote',
             'cleanup_tempfiles_local',
         ),
+        'server_environmentsetup'=>array(
+            'restart_nginx',
+            'restart_php7.0fpm',
+        ),
     );
 
     $deploy_macro_context = '';
     $deploy_macro_context .= implode(PHP_EOL,$spec_procs['pack_remotepack']).PHP_EOL;
     $deploy_macro_context .= implode(PHP_EOL,$spec_procs['subproc_releasesetup']).PHP_EOL;
-    $deploy_macro_context .= implode(PHP_EOL,$spec_procs['subproc_versionsetup']);
+    $deploy_macro_context .= implode(PHP_EOL,$spec_procs['subproc_versionsetup']).PHP_EOL;
+    $deploy_macro_context .= implode(PHP_EOL,$spec_procs['server_environmentsetup']);
 @endsetup
 
 @servers($envoy_servers)
@@ -326,6 +331,14 @@
     echo 'Cleanup Local tempfiles';
     [ -f release.tgz ] && rm -rf release.tgz;
     echo "Cleanup Local tempfiles done.";
+@endtask
+
+@task('restart_nginx', ['on' => $server_labels, 'parallel' => true])
+    sudo service nginx restart;
+@endtask
+
+@task('restart_php7.0fpm', ['on' => $server_labels, 'parallel' => true])
+    sudo service php7.0-fpm restart;
 @endtask
 
 @after
