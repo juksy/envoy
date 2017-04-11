@@ -203,7 +203,7 @@
         exit 1;
     fi
 
-    chgrp -Rf ${service_owner} {{ $source_dir }};
+    chgrp -R ${service_owner} {{ $source_dir }};
     echo "extract pack release on remote Done.";
 @endtask
 
@@ -220,18 +220,14 @@
     do
         if [ -e {{ $source_dir }}/${subdirname} ]; then
             if [ ! -L {{ $source_dir }}/${subdirname} ]; then
-                mkdir -p {{ $app_base }}/${subdirname};
+                cp -r {{ $source_dir }}/${subdirname} {{ $app_base }}/${subdirname};
                 rm -rf {{ $source_dir }}/${subdirname};
-                ln -nfs {{ $app_base }}/${subdirname} {{ $source_dir }}/${subdirname};
             fi
-        else
-            mkdir -p {{ $app_base }}/${subdirname};
-            rm -rf {{ $source_dir }}/${subdirname};
-            ln -nfs {{ $app_base }}/${subdirname} {{ $source_dir }}/${subdirname};
         fi
 
-        chgrp -f ${service_owner} {{ $app_base }}/${subdirname};
-        chmod -f ug+rwx {{ $app_base }}/${subdirname};
+        ln -nfs {{ $app_base }}/${subdirname} {{ $source_dir }}/${subdirname};
+        sudo chgrp -R ${service_owner} {{ $app_base }}/${subdirname};
+        sudo chmod -R ug+rwx {{ $app_base }}/${subdirname};
     done
     echo "RemoteRelease Prepare Done.";
 @endtask
