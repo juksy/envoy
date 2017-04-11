@@ -11,7 +11,8 @@ $subset = getenv('ENVOY_SUBSET');
 $connections = getenv('ENVOY_CONNECTIONS');
 if (is_file($connections)) {
     $connections = file_get_contents($connections);
-} else {
+}
+else if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $connections)) {
     $connections = base64_decode($connections);
 }
 
