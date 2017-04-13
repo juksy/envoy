@@ -55,12 +55,12 @@ $settings = [
     'deps_install_component'=> [
         'composer'=>true,
         'npm'=>true,
-        'bower'=>true,
-        'gulp'=>true,
+        'bower'=>false,
+        'gulp'=>false,
     ],
     'deps_install_command'=> [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
-        'npm'=>'npm install --cache-min 999999 --quiet',
+        'npm'=>'npm install --cache-min 999999 --quiet && npm run production',
         'bower'=>'bower install',
         'gulp'=>'gulp',
     ],
@@ -69,7 +69,7 @@ $settings = [
         'artisan'=> [
             'optimize'=>true,
             'config_cache'=>true,
-            'route_cache'=>false,
+            'route_cache'=>true,
         ],
     ],
     'runtime_optimize_command'=> [
