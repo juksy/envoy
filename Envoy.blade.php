@@ -276,16 +276,6 @@
         {{ $settings['deps_install_command']['npm'] }};
         echo "NPM installed.";
     fi
-    if [ {{ intval($settings['deps_install_component']['bower']) }} -eq 1 ]; then
-        echo "Bower install...";
-        {{ $settings['deps_install_command']['bower'] }};
-        echo "Bower installed.";
-    fi
-    if [ {{ intval($settings['deps_install_component']['gulp']) }} -eq 1 ]; then
-        echo "gulp build...";
-        {{ $settings['deps_install_command']['gulp'] }};
-        echo "gulp built.";
-    fi
     echo "RemoteSource Dependencies installed.";
 @endtask
 

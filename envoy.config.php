@@ -55,14 +55,10 @@ $settings = [
     'deps_install_component'=> [
         'composer'=>true,
         'npm'=>true,
-        'bower'=>false,
-        'gulp'=>false,
     ],
     'deps_install_command'=> [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
         'npm'=>'npm install --cache-min 999999 --quiet && npm run production',
-        'bower'=>'bower install',
-        'gulp'=>'gulp',
     ],
     'runtime_optimize_component'=> [
         'composer'=>false,
