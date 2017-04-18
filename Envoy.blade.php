@@ -268,12 +268,16 @@
     cd {{ $source_dir }};
     if [ {{ intval($settings['deps_install_component']['composer']) }} -eq 1 ]; then
         echo "Composer install...";
-        {{ $settings['deps_install_command']['composer'] }};
+        {{
+            $settings['deps_install_command']["composer_$env"] or $settings['deps_install_command']['composer']
+        }};
         echo "Composer installed.";
     fi
     if [ {{ intval($settings['deps_install_component']['npm']) }} -eq 1 ]; then
         echo "NPM install...";
-        {{ $settings['deps_install_command']['npm'] }};
+        {{
+            $settings['deps_install_command']["npm_$env"] or $settings['deps_install_command']['npm']
+        }};
         echo "NPM installed.";
     fi
     echo "RemoteSource Dependencies installed.";

@@ -58,7 +58,8 @@ $settings = [
     ],
     'deps_install_command'=> [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
-        'npm'=>'npm install --cache-min 999999 --quiet && npm run production',
+        'npm'=>'npm install --quiet && npm run production',
+        'npm_develop'=>'npm install --quiet && npm run dev',
     ],
     'runtime_optimize_component'=> [
         'composer'=>false,
