@@ -41,6 +41,7 @@ $shared_subdirs = [
     'storage',
     'public/files',
     'public/static',
+    'bootstrap/cache',
 ];
 
 /**
