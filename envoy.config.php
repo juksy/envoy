@@ -67,6 +67,7 @@ $settings = [
             'optimize'=>true,
             'config_cache'=>true,
             'route_cache'=>true,
+            'migration'=>true,
         ],
     ],
     'runtime_optimize_command'=> [
@@ -75,6 +76,7 @@ $settings = [
             'optimize'=>'php artisan clear-compiled && php artisan optimize',
             'config_cache'=>'php artisan config:clear && php artisan config:cache',
             'route_cache'=>'php artisan route:clear && php artisan route:cache',
+            'migration'=>'php artisan migrate --no-interaction',
         ],
     ],
 ];

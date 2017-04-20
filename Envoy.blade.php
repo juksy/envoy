@@ -306,6 +306,11 @@
         {{ $settings['runtime_optimize_command']['artisan']['route_cache'] }};
         echo "artisan route:cache done.";
     fi
+    if [ {{ intval($settings['runtime_optimize_component']['artisan']['migration']) }} -eq 1 ]; then
+        echo "artisan migrate...";
+        {{ $settings['runtime_optimize_command']['artisan']['migration'] }};
+        echo "artisan migrate done.";
+    fi
     echo "RemoteSource Runtime optimized.";
 @endtask
 
