@@ -66,7 +66,7 @@ $settings = [
         'composer'=>false,
         'artisan'=> [
             'optimize'=>true,
-            'config_cache'=>true,
+            'config_cache'=>false,
             'route_cache'=>true,
             'migration'=>true,
         ],
