@@ -271,21 +271,6 @@
         {{ $settings['deps_install_command']['composer'] }};
         echo "Composer installed.";
     fi
-    if [ {{ intval($settings['deps_install_component']['npm']) }} -eq 1 ]; then
-        echo "NPM install...";
-        {{ $settings['deps_install_command']['npm'] }};
-        echo "NPM installed.";
-    fi
-    if [ {{ intval($settings['deps_install_component']['bower']) }} -eq 1 ]; then
-        echo "Bower install...";
-        {{ $settings['deps_install_command']['bower'] }};
-        echo "Bower installed.";
-    fi
-    if [ {{ intval($settings['deps_install_component']['gulp']) }} -eq 1 ]; then
-        echo "gulp build...";
-        {{ $settings['deps_install_command']['gulp'] }};
-        echo "gulp built.";
-    fi
     echo "RemoteSource Dependencies installed.";
 @endtask
 
@@ -296,21 +281,6 @@
         echo "Composer optimize...";
         {{ $settings['runtime_optimize_command']['composer'] }};
         echo "Composer optimized.";
-    fi
-    if [ {{ intval($settings['runtime_optimize_component']['artisan']['optimize']) }} -eq 1 ]; then
-        echo "artisan optimize...";
-        {{ $settings['runtime_optimize_command']['artisan']['optimize'] }};
-        echo "artisan optimized.";
-    fi
-    if [ {{ intval($settings['runtime_optimize_component']['artisan']['config_cache']) }} -eq 1 ]; then
-        echo "artisan config:cache...";
-        {{ $settings['runtime_optimize_command']['artisan']['config_cache'] }};
-        echo "artisan config:cache done.";
-    fi
-    if [ {{ intval($settings['runtime_optimize_component']['artisan']['route_cache']) }} -eq 1 ]; then
-        echo "artisan route:cache...";
-        {{ $settings['runtime_optimize_command']['artisan']['route_cache'] }};
-        echo "artisan route:cache done.";
     fi
     echo "RemoteSource Runtime optimized.";
 @endtask

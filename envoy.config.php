@@ -38,9 +38,6 @@ $source_name = 'source';
  * shared sub-directories name , eg: storage
  */
 $shared_subdirs = [
-    'storage',
-    'public/files',
-    'public/static',
 ];
 
 /**
@@ -54,30 +51,14 @@ $settings = [
 	// depends install components settings.
     'deps_install_component'=> [
         'composer'=>true,
-        'npm'=>true,
-        'bower'=>true,
-        'gulp'=>true,
     ],
     'deps_install_command'=> [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
-        'npm'=>'npm install --cache-min 999999 --quiet',
-        'bower'=>'bower install',
-        'gulp'=>'gulp',
     ],
     'runtime_optimize_component'=> [
-        'composer'=>false,
-        'artisan'=> [
-            'optimize'=>true,
-            'config_cache'=>true,
-            'route_cache'=>false,
-        ],
+        'composer'=>true,
     ],
     'runtime_optimize_command'=> [
         'composer'=>'composer dump-autoload --optimize',
-        'artisan'=> [
-            'optimize'=>'php artisan clear-compiled && php artisan optimize',
-            'config_cache'=>'php artisan config:clear && php artisan config:cache',
-            'route_cache'=>'php artisan route:clear && php artisan route:cache',
-        ],
     ],
 ];
