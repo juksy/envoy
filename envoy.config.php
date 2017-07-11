@@ -39,8 +39,7 @@ $source_name = 'source';
  */
 $shared_subdirs = [
     'storage',
-    'public/files',
-    'public/static',
+    'public/events',
     'bootstrap/cache',
 ];
 
