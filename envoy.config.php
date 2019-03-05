@@ -60,6 +60,7 @@ $settings = [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
         'npm'=>'npm install --quiet && npm run production',
         'npm_develop'=>'npm install --quiet && npm run dev',
+	'npm_beta'=>'npm install --quiet && npm run dev',
     ],
     'runtime_optimize_component'=> [
         'composer'=>false,
