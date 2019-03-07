@@ -58,9 +58,9 @@ $settings = [
     ],
     'deps_install_command'=> [
         'composer'=>'composer install --prefer-dist --no-scripts --no-interaction --quiet',
-        'npm'=>'npm install --quiet && npm run production',
-        'npm_develop'=>'npm install --quiet && npm run dev',
-	'npm_beta'=>'npm install --quiet && API_HOST=api.juksy.me npm run production',
+        'npm'=>'npm install --quiet --no-optional && npm run production',
+        'npm_develop'=>'npm install --quiet --no-optional && npm run dev',
+	'npm_beta'=>'npm install --quiet --no-optional && API_HOST=api.juksy.me npm run production',
     ],
     'runtime_optimize_component'=> [
         'composer'=>false,
